@@ -56,6 +56,7 @@ class RegistrationSteps:
         self.picture.send_keys(resource.path(user.picture))
 
         self.current_address.set_value(user.current_address)
+        self.menu_state.perform(command.js.scroll_into_view)
         self.menu_state.click()
         self.all_states.element_by(have.exact_text(user.state)).click()
         self.menu_city.click()
