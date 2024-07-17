@@ -1,4 +1,4 @@
-from selene import browser, have
+from selene import browser, have, command
 
 from demoqa_tests.data.users import SimpleUser
 
@@ -20,6 +20,7 @@ class SimpleRegistrationPage:
         self.email.type(user.email)
         self.current_address.type(user.current_address)
         self.permanent_address.type(user.permanent_address)
+        self.submit_button.perform(command.js.scroll_into_view)
         self.submit_button.click()
 
     def should_have_submitted(self, user: SimpleUser):
