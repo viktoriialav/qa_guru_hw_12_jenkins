@@ -17,6 +17,7 @@ class RegistrationSteps:
 
         self.subjects = browser.element('#subjectsInput')
         self.hobbies = browser.all('[for^=hobbies-checkbox]')
+        self.hobby = browser.element('[for^=hobbies-checkbox]')
 
         self.picture = browser.element('#uploadPicture')
 
@@ -50,7 +51,7 @@ class RegistrationSteps:
         for subject in user.subjects:
             self.subjects.type(subject).press_enter()
 
-        self.hobbies.perform(command.js.scroll_into_view)
+        self.hobby.perform(command.js.scroll_into_view)
         for hobby in user.hobbies:
             self.hobbies.element_by(have.text(hobby.value)).click()
 

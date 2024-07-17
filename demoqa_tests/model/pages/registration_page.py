@@ -38,7 +38,7 @@ class RegistrationPage:
         browser.element('#subjectsInput').type(value).click().press_enter()
 
     def fill_hobbies(self, value):
-        browser.all('[for^=hobbies-checkbox]').perform(command.js.scroll_into_view)
+        browser.element('[for^=hobbies-checkbox]').perform(command.js.scroll_into_view)
         browser.all('[for^=hobbies-checkbox]').element_by(have.exact_text(value)).click()
 
     def upload_picture(self, value):
