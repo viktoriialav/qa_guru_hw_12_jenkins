@@ -1,7 +1,7 @@
 from datetime import date
 
 import allure
-from allure_commons.types import Severity, LabelType
+from allure_commons.types import Severity
 
 from demoqa_tests.application import app
 from demoqa_tests.data import users
@@ -27,6 +27,7 @@ def test_demoqa_simple_practice_form():
     # THEN
     with allure.step('Check form results'):
         app.simple_registration_page.should_have_submitted(vika)
+
 
 @allure.feature('Registration form')
 @allure.title('Test of student registration form')
