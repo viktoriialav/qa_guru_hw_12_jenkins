@@ -10,6 +10,15 @@ from selenium.webdriver.chrome.options import Options
 from utils import attach
 
 
+def pytest_addoption(parser):
+    parser.addoption(
+        '--browser_version',
+        help='Browser version for all tests',
+        default='100.0',
+        choices=['100.0', '99.0', '120.0', '121.0', '122.0']
+    )
+
+
 @pytest.fixture(scope='session', autouse=True)
 def load_env():
     load_dotenv()
@@ -17,6 +26,7 @@ def load_env():
 
 @pytest.fixture(scope="function", autouse=True)
 def setup_browser(request):
+    browser_version = request.config.getoption('--browser_version')
     browser.config.base_url = 'https://demoqa.com'
     browser.config.window_height = 1080
     browser.config.window_width = 1920
@@ -24,7 +34,7 @@ def setup_browser(request):
     options.page_load_strategy = 'eager'
     selenoid_capabilities = {
         "browserName": "chrome",
-        "browserVersion": "100.0",
+        "browserVersion": browser_version,
         "selenoid:options": {
             "enableVNC": True,
             "enableVideo": True
