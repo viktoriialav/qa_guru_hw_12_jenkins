@@ -3,7 +3,7 @@ from datetime import date
 import allure
 from allure_commons.types import Severity
 
-from demoqa_tests.application import app
+from demoqa_tests.model.application import app
 from demoqa_tests.data import users
 
 
@@ -89,12 +89,12 @@ def test_demoqa_practice_form_all_steps():
     with allure.step('Check form results'):
         app.registration_page.should_have_submitting_form()
         app.registration_page.should_have_registered('Viktoriia Lav',
-                                                 'newuser@gmail.com',
-                                                 'Female',
-                                                 '8800222334',
-                                                 date(1993, 5, 17),
-                                                 'Chemistry',
-                                                 'Sports, Reading',
-                                                 'photo.png',
-                                                 '144 Broadway, suit 12',
-                                                 'NCR Gurgaon')
+                                                     'newuser@gmail.com',
+                                                     'Female',
+                                                     '8800222334',
+                                                     date(1993, 5, 17),
+                                                     'Chemistry',
+                                                     'Sports, Reading',
+                                                     'photo.png',
+                                                     '144 Broadway, suit 12',
+                                                     'NCR Gurgaon')

@@ -1,7 +1,7 @@
 from selene import browser, have, command
 from selenium.webdriver import Keys
 
-from demoqa_tests import resource
+from utils import resource
 from demoqa_tests.data.users import User
 
 

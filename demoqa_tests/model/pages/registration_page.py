@@ -3,6 +3,7 @@ import os
 from selene import browser, have, command
 
 import tests
+from utils import resource
 
 
 class RegistrationPage:
@@ -42,9 +43,7 @@ class RegistrationPage:
         browser.all('[for^=hobbies-checkbox]').element_by(have.exact_text(value)).click()
 
     def upload_picture(self, value):
-        browser.element('#uploadPicture').send_keys(os.path.abspath(
-            os.path.join(os.path.dirname(tests.__file__), f'resources/{value}')
-        ))
+        browser.element('#uploadPicture').send_keys(resource.path(value))
 
     def fill_current_address(self, value):
         browser.element('#currentAddress').with_(set_value_by_js=True).set_value(value)
